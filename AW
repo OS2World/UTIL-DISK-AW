@@ -1,0 +1,18 @@
+
+cp=cl -c -W3 -AL -G2sw -Otl -Zpe
+
+.c.obj:
+    $(cp) $*.c
+
+.rc.res:
+    rc -r $*.rc
+
+aw.obj: aw.c aw.h
+
+scr.obj: scr.c scr.h aw.h
+
+aw.res: aw.rc aw.ico aw.h
+
+aw.exe: aw.obj scr.obj aw.res aw.lnk aw.def
+    link @aw.lnk
+    rc aw.res

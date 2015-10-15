@@ -1,0 +1,56 @@
+#include <os2.h>
+#include "aw.h"
+
+POINTER AWICON   aw.ico
+
+#define TABGRP  WS_TABSTOP|WS_GROUP
+
+MENU AWICON  PRELOAD
+   BEGIN
+	SUBMENU "~Select",   IDM_COMMANDS
+	BEGIN
+	     MENUITEM "~Filename\t^F ",    IDM_PARA,
+	    MENUITEM "~About\t^A",	   IDMABOUT,	MIS_TEXT
+	 END
+	SUBMENU "E~xit",		   IDM_EXIT
+	BEGIN
+	     MENUITEM "E~xit Aw\tF3",	   IDM_EXITAW
+	     MENUITEM "~Resume Aw",	   IDM_RESUME
+	END
+   END
+
+ACCELTABLE	AWICON
+BEGIN
+   61,IDM_EXITAW,SCANCODE
+   "^F",IDM_PARA
+   "^A",IDMABOUT
+END
+
+DLGTEMPLATE IDD_ABOUT
+BEGIN
+    DIALOG "", 1, 10, 10, 190, 72, FS_DLGBORDER
+    BEGIN
+	CTEXT "OS/2 Presentation Manager",	      -1, 0, 60, 190,  8
+	CTEXT "AnyWhere Program",		      -1, 0, 52, 190,  8
+	CTEXT "Version 1.00",			      -1, 0, 44, 190,  8
+	CTEXT "Copyright (c) 1988, 1989 Compu-Plane.",-1,  0,30, 190,  8
+	CTEXT "BBS phone # 818 843-3507.",	      -1, 0, 18, 190,  8
+	ICON  AWICON,				      -1, 6, 44,   0,  0
+	DEFPUSHBUTTON "Ok",			  DID_OK, 6,  4,  38, 12, TABGRP
+    END
+END
+
+DLGTEMPLATE IDD_PARA
+BEGIN
+    DIALOG "", 1, 10, 22, 190, 62, FS_DLGBORDER
+    BEGIN
+	CTEXT	  "Filename",	 IDNULL,	  45, 50, 56,  8
+	EDITTEXT  "",		 IDD_FILE,	 100, 50, 62,  8, ES_MARGIN
+	LISTBOX 		 IDD_LISTBOX,	  5,  10, 30, 50,TABGRP|LS_MULTIPLESEL
+	AUTOCHECKBOX "System Files",	IDD_SYS, 45 , 32, 70, 12,WS_GROUP
+	AUTOCHECKBOX "Hidden Files",	IDD_HID, 120, 32, 70, 12,WS_GROUP
+	AUTOCHECKBOX "All other Files", IDD_ALL,  80, 20, 74, 12,WS_GROUP
+	DEFPUSHBUTTON "Ok",		 DID_OK,  54,  4, 38, 12,TABGRP
+	PUSHBUTTON "Cancel",	      DID_CANCEL,130,  4, 38, 12,TABGRP
+    END
+END

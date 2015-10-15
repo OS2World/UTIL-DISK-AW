@@ -1,0 +1,16 @@
+NAME	AW   WINDOWAPI
+
+DESCRIPTION 'Compu-Plane AnyWhere program'
+
+STUB	'OS2STUB.EXE'
+
+CODE	MOVEABLE
+DATA	MOVEABLE MULTIPLE
+
+HEAPSIZE  8192
+STACKSIZE 12000
+
+EXPORTS
+    awWndProc @1
+    ParaDlg   @2
+    AboutDlg  @3
