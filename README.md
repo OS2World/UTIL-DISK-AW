@@ -1,5 +1,5 @@
 # UTIL-DISK-AW
-AW. Same aout using dialog boxes and searching files on the hard drive.
+AW. Sample aout using dialog boxes and searching files on the hard drive.
 
 LICENSE
 ===============
